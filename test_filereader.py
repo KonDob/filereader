@@ -1,6 +1,5 @@
 import pytest
-
-from outputlines import print_paths_parts
+from main_script.outputlines import print_paths_parts
 
 
 def test_check_output_last_line(capsys):

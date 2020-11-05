@@ -2,13 +2,20 @@ import pytest
 from main_script.outputlines import print_paths_parts
 
 
-def test_check_output_last_line(capsys):
+def test_output_last_line(capsys):
     print_paths_parts('test_file.txt', 1)
     captured = capsys.readouterr()
     assert captured.out == "end\n\n"
 
 
-def test_check_return_data():
+def test_big_input_amount(capsys):
+    print_paths_parts('test_file.txt', 90)
+    captured = capsys.readouterr()
+    assert "Sorry, amount of number is bigger than amount of lines." \
+        in captured.out
+
+
+def test_return_none():
     assert print_paths_parts('test_file.txt', 2) == None
 
 
@@ -27,6 +34,8 @@ def test_call_only_number():
         print_paths_parts(2)
 
 
-def test_file_not_found():
-    with pytest.raises(FileNotFoundError):
-        print_paths_parts('none.txt', 2)
+def test_file_not_found(capsys):
+    print_paths_parts('not_existing_path_to_file.txt', 1)
+    captured = capsys.readouterr()
+    assert 'Sorry - path to file doesn`t exist.Please provide another path' \
+        in captured.out

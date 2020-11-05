@@ -1,8 +1,5 @@
 from os import path
 
-path_to_file = input('Please provide location of target file: ')
-number = input('Please add amount for lines: ')
-
 
 def print_paths_parts(file, number):
 
@@ -21,12 +18,16 @@ def print_paths_parts(file, number):
     """
     number = int(number)
 
-    if path.isfile(path_to_file):
-        print('Path file is valid. Yeah this is path to file' + '\n')
+    if not path.isfile(file):
+        print('Sorry - path to file doesn`t exist.Please provide another path')
+    else:
         with open(file, 'r') as file:
             file_lines = file.readlines()
-            for i in reversed(range(1, number+1)):
-                # Print last N lines of file in correct order
-                print(file_lines[-i])
-    else:
-        print('Sorry - path to file doesn`t exist.Please provide another file')
+            max_number = len(file_lines)
+            if number > max_number:
+                print("Sorry, amount of number is bigger than amount of lines.\
+                      Amount in provided file is {}".format(max_number), sep='')
+            else:
+                for i in reversed(range(1, number+1)):
+                    # Print last N lines of file in correct order
+                    print(file_lines[-i])

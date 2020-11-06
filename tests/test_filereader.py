@@ -16,7 +16,7 @@ def test_big_input_amount(capsys):
 
 
 def test_return_none():
-    assert print_paths_parts('test_file.txt', 2) == None
+    assert print_paths_parts('test_file.txt', 2) is not True
 
 
 def test_empty_call():

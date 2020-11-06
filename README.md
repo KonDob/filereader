@@ -1,5 +1,6 @@
-Hello dear User! This repository if for using filereader script and tests
+Hello dear User! This repository is for using filereader script and tests
 Main goal of script - print last N lines of file, which you provide with path to file and amount of lines. 
+Also there is tests cause Jacob Kaplan-Moss, one of Django’s original developers, says “Code without tests is broken by design.”
 
 Instruction are mostly for UNIX OS. Some command may not work for your OS. 
 Please use official documentation, provided by your OS to achieve result in the steps under. 

@@ -24,7 +24,7 @@ Steps to run script and tests:
  Run tests:
     
     1)Go to projects folder via cd command
-    2)Run 'pytest -s'
+    2)Run 'pytest'
     3)Check results in terminal
     
     

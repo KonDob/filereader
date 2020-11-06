@@ -31,3 +31,6 @@ def print_paths_parts(file, number):
                 for i in reversed(range(1, number+1)):
                     # Print last N lines of file in correct order
                     print(file_lines[-i])
+
+
+print_paths_parts('test_file.txt', 2)

@@ -17,9 +17,14 @@ def print_paths_parts(file, number):
             None
     """
     number = int(number)
+    text_extensions = ['doc', 'odt', 'pdf', 'rtf', 'tex', 'txt', 'wpd']
+    file_extenstion = file[-3:]
 
     if not path.isfile(file):
         print('Sorry - path to file doesn`t exist.Please provide another path')
+    elif file_extenstion not in text_extensions:
+        print("Sorry - extension of file doesn`t valid. Please try {}\
+            ".format(text_extensions))
     elif number <= 0:
         print('Please provide number more than 0')
     else:

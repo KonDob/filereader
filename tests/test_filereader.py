@@ -2,16 +2,44 @@ import pytest
 from main_script.outputlines import print_paths_parts
 
 
+
 def test_output_last_line(help_method, capsys):
     print_paths_parts('test_file.txt', 1)
     captured = capsys.readouterr()
     assert captured.out == "end\n\n"
 
 
-def test_big_input_amount(capsys):
+def test_output_3_last_line(help_method, capsys):
+    print_paths_parts('test_file.txt', 3)
+    captured = capsys.readouterr()
+    assert "esse\n\nExcepteur\n\nend" in captured.out
+
+
+def test_input_invalid_big_amount(capsys):
     print_paths_parts('test_file.txt', 90)
     captured = capsys.readouterr()
     assert "Sorry, amount of number is bigger than amount of lines." \
+        in captured.out
+
+
+def test_input_0_amount(capsys):
+    print_paths_parts('test_file.txt', 0)
+    captured = capsys.readouterr()
+    assert "Please provide number more than 0" \
+        in captured.out
+
+
+def test_input_negative_1_amount(capsys):
+    print_paths_parts('test_file.txt', -1)
+    captured = capsys.readouterr()
+    assert "Please provide number more than 0" \
+        in captured.out
+
+
+def test_input_negative_9_amount(capsys):
+    print_paths_parts('test_file.txt', -9)
+    captured = capsys.readouterr()
+    assert "Please provide number more than 0" \
         in captured.out
 
 

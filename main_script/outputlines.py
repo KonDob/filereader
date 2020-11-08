@@ -20,17 +20,16 @@ def print_paths_parts(file, number):
 
     if not path.isfile(file):
         print('Sorry - path to file doesn`t exist.Please provide another path')
+    elif number <= 0:
+        print('Please provide number more than 0')
     else:
         with open(file, 'r') as file:
             file_lines = file.readlines()
             max_number = len(file_lines)
             if number > max_number:
                 print("Sorry, amount of number is bigger than amount of lines.\
-                      Amount in provided file is {}".format(max_number), sep='')
+                      Amount in provided file is {}".format(max_number))
             else:
                 for i in reversed(range(1, number+1)):
                     # Print last N lines of file in correct order
                     print(file_lines[-i])
-
-
-print_paths_parts('test_file.txt', 2)

@@ -2,7 +2,6 @@ import pytest
 from main_script.outputlines import print_paths_parts
 
 
-
 def test_output_last_line(help_method, capsys):
     print_paths_parts('test_file.txt', 1)
     captured = capsys.readouterr()

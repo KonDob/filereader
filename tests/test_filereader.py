@@ -2,19 +2,13 @@ import pytest
 from main_script.outputlines import print_paths_parts
 
 
-def test_output_last_line(help_method, capsys):
+def test_output_last_line(capsys):
     print_paths_parts('test_file.txt', 1)
     captured = capsys.readouterr()
     assert captured.out == "end\n\n"
 
 
-def test_file_not_valid_extension_(help_method, capsys):
-    print_paths_parts('test_file.mp4', 1)
-    captured = capsys.readouterr()
-    assert "Sorry - extension of file doesn`t valid. Please try" in captured.out
-
-
-def test_output_3_last_line(help_method, capsys):
+def test_output_3_last_line(capsys):
     print_paths_parts('test_file.txt', 3)
     captured = capsys.readouterr()
     assert "esse\n\nExcepteur\n\nend" in captured.out
@@ -65,6 +59,11 @@ def test_call_only_filename():
 def test_call_only_number():
     with pytest.raises(TypeError):
         print_paths_parts(2)
+
+
+def test_call_with_3_parameters(capsys):
+    with pytest.raises(TypeError):
+        print_paths_parts()
 
 
 def test_file_not_found(capsys):
